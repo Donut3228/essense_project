@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load category_tag %}
+
+{% block content %}
+
+    {% for cat in categories %}
+        <h1>{{ cat.name }}</h1>
+        {% for item in items %}
+            {% if item.category_id is cat.id %}
+                <a href="{% url 'item_detail' pk=item.id %}"><li>{{ item.name }}</li></a>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+
+
+{#    {% for item in items %}#}
+{#        <a href="{% url 'item_detail' pk=item.id %}"><li>{{ item.category }}</li></a>#}
+{#    {% endfor %}#}
+
+{% endblock %}
